@@ -5,11 +5,27 @@
 int main()
 {
     Stack_t stk;
-
-    stack_ctor(&stk, 10);
+    Elem_t value;
+    stack_ctor(&stk, 0);
     stack_dump(&stk);
+
     stack_push(&stk, 37);
     stack_dump(&stk);
+
+    stack_pop(&stk, &value);
+    stack_dump(&stk);
+    for (int i = 0; i < 50; i++)
+    {
+        stack_push(&stk, i);
+        stack_dump(&stk);
+    }
+    printf("value: %Lf\n\n", value);
+
+    for (int i = 0; i < 35; i++)
+    {
+        stack_pop(&stk, &value);
+        stack_dump(&stk);
+    }
     stack_dtor(&stk);
     stack_dump(&stk);
     return 0;

@@ -23,14 +23,19 @@ STACK_STATUS stack_resize(Stack_t* stk, float step)
 {
     if (!stk->capacity)
     {
-        stk->capacity = 1;
+        stk->capacity = 8;
     } 
-    long int new_capacity = (stk->capacity * step);
-    stk->data = (Elem_t*)realloc(stk->data, new_capacity * sizeof(Elem_t)); 
-    for (long int i = stk->size; i < new_capacity; i++)
+
+    size_t new_capacity = (stk->capacity * step);
+
+    stk->data = (Elem_t*)realloc(stk->data, new_capacity * sizeof (Elem_t)); 
+    for (size_t i = stk->capacity; i < new_capacity; i++)
     {
         stk->data[i] = POISON;
     }
+
+    stk->capacity = new_capacity;
+
     return OK;
 }
 
@@ -40,9 +45,8 @@ STACK_STATUS stack_push(Stack_t* stk, Elem_t elem)
     {
         stack_resize(stk, UP_MEM_STEP);
     }
-    assert(int (stk->size <= stk->capacity));
-    stk->data[stk->size] = elem;
-    stk->size++;
+    assert(stk->size <= stk->capacity);
+    stk->data[stk->size++] = elem;
     
     /*printf("size before push: %lu\n", stk->size);
     printf("elem, capacity: %Lf %lu\n", stk->data[0], stk->capacity);*/
@@ -78,7 +82,7 @@ void stack_dump(Stack_t* stk)
         printf("\tsize = %zu\n", stk->size);
         printf("\tcapacity = %zu\n", stk->capacity);
 
-        printf("\tdata\n");
+        printf("\tdata = %p\n", (void*)stk->data);
         printf("\t{\n");
         for (size_t i = 0; i < stk->size; i++)
         {
