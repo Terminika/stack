@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "func.h"
+#include "stack_lib.h"
 
 
 int main()
@@ -7,27 +7,27 @@ int main()
     Stack_t stk;
     Elem_t value;
     stack_ctor(&stk, 0);
-    stack_dump(&stk);
+    stack_verificator(&stk);
 
     stack_push(&stk, 37);
-    stack_dump(&stk);
+    stack_verificator(&stk);
 
     stack_pop(&stk, &value);
-    stack_dump(&stk);
+    stack_verificator(&stk);
     for (int i = 0; i < 50; i++)
     {
         stack_push(&stk, i);
-        stack_dump(&stk);
     }
-    printf("value: %Lf\n\n", value);
+    stack_verificator(&stk);
 
     for (int i = 0; i < 35; i++)
     {
         stack_pop(&stk, &value);
-        stack_dump(&stk);
     }
+    stack_verificator(&stk);
+
     stack_dtor(&stk);
-    stack_dump(&stk);
+    stack_verificator(&stk);
     return 0;
 }
 
