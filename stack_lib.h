@@ -10,28 +10,30 @@
 #define DOWN_MEM_STEP pow(1.5, -1)
 #define POISON 0xBADDEDBADl
 #define POISON_PTR 0x11
-
+#define CANARY 0xDEADDEDBADDED32F
 
 
 enum STACK_STATUS
 {
     OK = 0,
-    OVERLOAD = 1,
-    NULL_PTR = 2,
-    NULL_DATA_PTR = 3,
+    NULL_PTR = 1,
+    NULL_DATA_PTR = 2,
     POISON_DATA_PTR = 4,
-    VERIFICATION_ERROR = 5
+    DAMAGED_STACK = 8,
+    VERIFICATION_ERROR = 16,
+
 };
 
 typedef long double Elem_t;
 
 typedef struct
 {
-    // elem_t * data;
+    unsigned long long left_canary;
     size_t size;
     size_t capacity;
     Elem_t* data; 
     int status;
+    unsigned long long right_canary;
 } Stack_t;
 
 

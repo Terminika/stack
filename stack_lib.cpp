@@ -40,7 +40,8 @@ while (0)
 
 STACK_STATUS stack_ctor(Stack_t* stk, size_t capacity)
 {
-    STACK_CHECK(stk);
+    stk->left_canary = CANARY;
+    stk->right_canary = CANARY;
     stk->size = 0;
     stk->capacity = capacity;
     stk->status = 0;
@@ -133,49 +134,64 @@ void stack_dump(Stack_t* stk)
     const char* status = "ok";
     
     printf("Stack [%lu] (%s)\n", (long int)stk, status); 
-    printf("{\n");
 
-    if (stk->size)
-    {
-        printf("\tsize = %zu\n", stk->size);
-        printf("\tcapacity = %zu\n", stk->capacity);
-
-        printf("\tdata = %p\n", (void*)stk->data);
-        printf("\t{\n");
-        for (size_t i = 0; i < stk->size; i++)
-        {
-            printf("\t\t[%ld] = %Lf\n", i, stk->data[i]);
-        }
-        printf("\t}\n");
-    }
-    else if (stk->data == (Elem_t*)POISON_DATA_PTR)
+    if (stk->data == (Elem_t*)POISON_PTR)
     {
         printf("\tStack was destructed\n");
     }
     else if (!stk->size)
     {
         printf("\tStack is empty\n");
+
+        printf("\t{\n");
+        printf("\t\tleft_canary = %p\n", (void*)stk->left_canary);
+
+        printf("\t\tsize = %zu\n", stk->size);
+        printf("\t\tcapacity = %zu\n", stk->capacity);
+
+        if (stk->size)
+        {
+            printf("\t\tdata = %p\n", (void*)stk->data);
+            printf("\t\t{\n");
+            for (size_t i = 0; i < stk->size; i++)
+            {
+                printf("\t\t\t[%ld] = %Lf\n", i, stk->data[i]);
+            }
+            printf("\t\t}\n");
+        }
+        
+        printf("\t\tright_canary = %p\n", (void*)stk->right_canary);
+        printf("\t}\n\n\n\n");
+
     }
-    printf("}\n\n\n\n");
 }
 
 int stack_verificator(Stack_t *stk)
 {
+    printf("in verificator\n");
     if (stk == NULL)
     {
-        return 1;
+        printf("null ptr\n");
+        return NULL_PTR;
     }
-    if (stk->data ==(Elem_t*) NULL_DATA_PTR)
+    if (stk->data == (Elem_t*) NULL)
     {
-        stk->status |= 0b1;
+        printf("null data ptr\n");
+        stk->status |= NULL_DATA_PTR;
     }
-    if (stk->data == (Elem_t*)POISON_DATA_PTR)
+    if (stk->data == (Elem_t*) POISON_PTR)
     {
-        stk->status |= 0b10;
+        printf("poison data ptr\n");
+        stk->status |= POISON_DATA_PTR;
     }
-    
+    if (stk->left_canary != CANARY || stk->right_canary != CANARY)
+    {
+        printf("damaged stack\n");
+        stk->status |= DAMAGED_STACK;
+    }
+    printf("%x\n\n\n", stk->status);
     if (!((stk->status & 0b1) || (stk->status & 0b10)))
         stack_dump(stk);
-    
+
     return stk->status;
 }
