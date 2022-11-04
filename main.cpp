@@ -8,25 +8,24 @@ int main()
     Elem_t value;
     stack_ctor(&stk, 0);
 
-    /*stack_push(&stk, 37);
-    stack_verificator(&stk);
+    stack_push(&stk, 37);
 
-    stack_pop(&stk, &value);
-    stack_verificator(&stk);
-    for (int i = 0; i < 50; i++)
+    /*stack_pop(&stk, &value);
+    for (int i = 0; i < 10; i++)
     {
         stack_push(&stk, i);
     }
-    stack_verificator(&stk);
 
     for (int i = 0; i < 35; i++)
     {
         stack_pop(&stk, &value);
     }
-    stack_verificator(&stk);*/
-
+*/
     stk.left_canary = 123;
     stack_push(&stk, 3);
+
+    Canary_t* temp_ptr = (Canary_t*)(&stk.data) - 1;
+    *temp_ptr = 16;
 
     stack_dtor(&stk);
     return 0;

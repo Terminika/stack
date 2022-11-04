@@ -37,16 +37,61 @@ do\
 }\
 while (0)
 
+Elem_t* stack_calloc(size_t capacity)
+{
+
+    Canary_t* temp_ptr = (Canary_t*)calloc(1, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
+    
+    //printf("left canary %p\n", (void*)temp_ptr);
+    *temp_ptr = CANARY;
+    Elem_t* stk_data = (Elem_t*)(++temp_ptr);
+
+    //printf("stk data %p\n", (void*)stk_data);
+
+    temp_ptr = (Canary_t*)(stk_data + capacity);
+    //printf("right canary %p\n", (void*)temp_ptr);
+
+    *temp_ptr = CANARY;
+    //printf("calloc\n");
+    return stk_data;
+}
+
+Elem_t* stack_realloc(Stack_t* stk, size_t capacity)
+{
+    Canary_t* temp_ptr = (Canary_t*)(stk->data) - 1;
+    
+    temp_ptr = (Canary_t*)realloc(temp_ptr, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
+    printf("left canary %p\n", (void*)temp_ptr);
+
+    *temp_ptr = CANARY;
+    Elem_t* stk_data = (Elem_t*)(++temp_ptr);
+    printf("stk data %p\n", (void*)stk_data);
+
+    temp_ptr = (Canary_t*)(stk_data + capacity);
+    printf("right canary %p\n", (void*)temp_ptr);
+    
+    *temp_ptr = CANARY;
+    printf("realloc\n");
+
+    return stk_data;
+}
+
+void stack_free(Stack_t* stk)
+{
+    Canary_t* temp_ptr = (Canary_t*)(stk->data) - 1;
+    free(temp_ptr);
+    printf("free\n");
+
+}
 
 STACK_STATUS stack_ctor(Stack_t* stk, size_t capacity)
 {
     stk->left_canary = CANARY;
     stk->right_canary = CANARY;
     stk->size = 0;
-    stk->capacity = capacity;
+    stk->capacity = capacity ;
     stk->status = 0;
-    stk->data = (Elem_t*)calloc(capacity, sizeof(Elem_t));
-
+    stk->data = stack_calloc(capacity);
     assert(stk->data != (Elem_t*)NULL);
     if (stk == NULL)
     {
@@ -60,7 +105,7 @@ STACK_STATUS stack_dtor(Stack_t* stk)
 {
     STACK_CHECK(stk);
 
-    free(stk->data);
+    stack_free(stk);
 
     stk->capacity = 0;
     stk->size = 0;
@@ -79,7 +124,7 @@ STACK_STATUS stack_resize(Stack_t* stk, float step)
 
     size_t new_capacity = (stk->capacity * step);
 
-    stk->data = (Elem_t*)realloc(stk->data, new_capacity * sizeof (Elem_t)); 
+    stk->data = stack_realloc(stk, new_capacity); 
     for (size_t i = stk->capacity; i < new_capacity; i++)
     {
         stk->data[i] = POISON;
@@ -135,22 +180,28 @@ void stack_dump(Stack_t* stk)
     
     printf("Stack [%lu] (%s)\n", (long int)stk, status); 
 
+    printf("\tleft_canary = %llx\n", stk->left_canary);
+
     if (stk->data == (Elem_t*)POISON_PTR)
     {
         printf("\tStack was destructed\n");
     }
-    else if (!stk->size)
+    else
     {
-        printf("\tStack is empty\n");
+        if (!(stk->size))
+        {
+            printf("\tStack is empty\n\n");
+        }
 
         printf("\t{\n");
-        printf("\t\tleft_canary = %p\n", (void*)stk->left_canary);
 
         printf("\t\tsize = %zu\n", stk->size);
         printf("\t\tcapacity = %zu\n", stk->capacity);
 
         if (stk->size)
         {
+            printf("\t\tleft_data_canary = %llx\n", *((Canary_t*)(stk->data) - 1));
+
             printf("\t\tdata = %p\n", (void*)stk->data);
             printf("\t\t{\n");
             for (size_t i = 0; i < stk->size; i++)
@@ -158,17 +209,19 @@ void stack_dump(Stack_t* stk)
                 printf("\t\t\t[%ld] = %Lf\n", i, stk->data[i]);
             }
             printf("\t\t}\n");
+
+            printf("\t\tright_data_canary = %llx\n", *(Canary_t*)(stk->data + stk->capacity));
+
         }
         
-        printf("\t\tright_canary = %p\n", (void*)stk->right_canary);
-        printf("\t}\n\n\n\n");
-
+        printf("\t}\n");
     }
+    printf("\tright_canary = %llx\n\n\n\n", stk->right_canary);
+
 }
 
 int stack_verificator(Stack_t *stk)
 {
-    printf("in verificator\n");
     if (stk == NULL)
     {
         printf("null ptr\n");

@@ -25,15 +25,18 @@ enum STACK_STATUS
 };
 
 typedef long double Elem_t;
+typedef unsigned long long Canary_t;
 
 typedef struct
 {
-    unsigned long long left_canary;
+    Canary_t left_canary;
     size_t size;
     size_t capacity;
+
     Elem_t* data; 
+
     int status;
-    unsigned long long right_canary;
+    Canary_t right_canary;
 } Stack_t;
 
 
