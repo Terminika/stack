@@ -1,7 +1,5 @@
 #include "stack_lib.h"
-#include <stdio.h>
-//#define NDEBUG  // disable asserts
-#include <assert.h>
+
 
 #define ASSERT_NULL_PTR(ptr)     \
 do\
@@ -42,17 +40,13 @@ Elem_t* stack_calloc(size_t capacity)
 
     Canary_t* temp_ptr = (Canary_t*)calloc(1, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
     
-    //printf("left canary %p\n", (void*)temp_ptr);
     *temp_ptr = CANARY;
     Elem_t* stk_data = (Elem_t*)(++temp_ptr);
 
-    //printf("stk data %p\n", (void*)stk_data);
-
     temp_ptr = (Canary_t*)(stk_data + capacity);
-    //printf("right canary %p\n", (void*)temp_ptr);
 
     *temp_ptr = CANARY;
-    //printf("calloc\n");
+    
     return stk_data;
 }
 
@@ -76,8 +70,6 @@ void stack_free(Stack_t* stk)
 {
     Canary_t* temp_ptr = (Canary_t*)(stk->data) - 1;
     free(temp_ptr);
-    printf("free\n");
-
 }
 
 STACK_STATUS stack_ctor(Stack_t* stk, size_t capacity)
@@ -170,6 +162,30 @@ STACK_STATUS stack_top(Stack_t* stk, Elem_t* value)
     return OK;
 }
 
+void decode_error(unsigned int status, FILE* fp)
+{
+    if (status & VERIFICATION_ERROR)
+    {
+        fprintf(fp, "VERIFICATION ERROR\n");
+    }
+    if (status & DAMAGED_STACK)
+    {
+        fprintf(fp, "DAMAGED STACK\n");
+    }
+    if (status & POISON_DATA_PTR)
+    {
+        fprintf(fp, "POINTER OF STACK DATA WAS CHANGED WITH FORCE\n");
+    }
+    if (status & NULL_DATA_PTR)
+    {
+        fprintf(fp, "POINTER OF STACK DATA POINT TO NOTHING\n");
+    }
+    if (status & NULL_PTR)
+    {
+        fprintf(fp, "POINTER OF STACK POINT TO NOTHING\n");
+    }
+}
+
 void stack_dump(Stack_t* stk)
 {
     FILE *fp;
@@ -178,12 +194,12 @@ void stack_dump(Stack_t* stk)
         {
 
         }
-
-
-    const char* status = "ok";
     
-    fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, status); 
-
+    fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, stk->status == 0 ? "ok": "failed"); 
+    if (stk->status != 0)
+    {
+        decode_error(stk->status, fp);
+    }
     fprintf(fp, "\tleft_canary = %llx\n", stk->left_canary);
 
     if (stk->data == (Elem_t*)POISON_PTR)
@@ -229,27 +245,26 @@ int stack_verificator(Stack_t *stk)
 {
     if (stk == NULL)
     {
-        printf("null ptr\n");
         return NULL_PTR;
     }
     if (stk->data == (Elem_t*) NULL)
     {
-        printf("null data ptr\n");
         stk->status |= NULL_DATA_PTR;
     }
     if (stk->data == (Elem_t*) POISON_PTR)
     {
-        printf("poison data ptr\n");
         stk->status |= POISON_DATA_PTR;
     }
     if (stk->left_canary != CANARY || stk->right_canary != CANARY)
     {
-        printf("damaged stack\n");
         stk->status |= DAMAGED_STACK;
     }
-    printf("%x\n\n\n", stk->status);
+
+
     if (!((stk->status & 0b1) || (stk->status & 0b10)))
+    {
         stack_dump(stk);
+    }
 
     return stk->status;
 }

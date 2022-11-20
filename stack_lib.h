@@ -2,6 +2,7 @@
 #define STACK_H_terminika
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <locale.h>
 #include <assert.h>
 #include <math.h>
@@ -35,7 +36,7 @@ typedef struct
 
     Elem_t* data; 
 
-    int status;
+    unsigned int status;
     Canary_t right_canary;
 } Stack_t;
 
