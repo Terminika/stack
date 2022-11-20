@@ -1,0 +1,168 @@
+Stack [140732804667448] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732804667448] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732804667448] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7fbb8bc02af8
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732804667448] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = e4
+		data = 0x7fbb8bc02af8
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732867115064] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732867115064] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732867115064] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7fef59500008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732867115064] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = e4
+		data = 0x7fef59500008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732905330744] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732905330744] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732905330744] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7ffca5500008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732905330744] (ok)
+	left_canary = 7b
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = e4
+		data = 0x7ffca5500008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+

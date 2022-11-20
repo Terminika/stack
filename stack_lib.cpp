@@ -61,17 +61,13 @@ Elem_t* stack_realloc(Stack_t* stk, size_t capacity)
     Canary_t* temp_ptr = (Canary_t*)(stk->data) - 1;
     
     temp_ptr = (Canary_t*)realloc(temp_ptr, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
-    printf("left canary %p\n", (void*)temp_ptr);
 
     *temp_ptr = CANARY;
     Elem_t* stk_data = (Elem_t*)(++temp_ptr);
-    printf("stk data %p\n", (void*)stk_data);
 
     temp_ptr = (Canary_t*)(stk_data + capacity);
-    printf("right canary %p\n", (void*)temp_ptr);
     
     *temp_ptr = CANARY;
-    printf("realloc\n");
 
     return stk_data;
 }
@@ -176,48 +172,57 @@ STACK_STATUS stack_top(Stack_t* stk, Elem_t* value)
 
 void stack_dump(Stack_t* stk)
 {
+    FILE *fp;
+    char file_name[] = "stack_log.txt";
+    if ((fp = fopen(file_name, "a+")) == NULL)
+        {
+
+        }
+
+
     const char* status = "ok";
     
-    printf("Stack [%lu] (%s)\n", (long int)stk, status); 
+    fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, status); 
 
-    printf("\tleft_canary = %llx\n", stk->left_canary);
+    fprintf(fp, "\tleft_canary = %llx\n", stk->left_canary);
 
     if (stk->data == (Elem_t*)POISON_PTR)
     {
-        printf("\tStack was destructed\n");
+        fprintf(fp, "\tStack was destructed\n");
     }
     else
     {
         if (!(stk->size))
         {
-            printf("\tStack is empty\n\n");
+            fprintf(fp, "\tStack is empty\n\n");
         }
 
-        printf("\t{\n");
+        fprintf(fp, "\t{\n");
 
-        printf("\t\tsize = %zu\n", stk->size);
-        printf("\t\tcapacity = %zu\n", stk->capacity);
+        fprintf(fp, "\t\tsize = %zu\n", stk->size);
+        fprintf(fp, "\t\tcapacity = %zu\n", stk->capacity);
 
         if (stk->size)
         {
-            printf("\t\tleft_data_canary = %llx\n", *((Canary_t*)(stk->data) - 1));
+            fprintf(fp, "\t\tleft_data_canary = %llx\n", *((Canary_t*)(stk->data) - 1));
 
-            printf("\t\tdata = %p\n", (void*)stk->data);
-            printf("\t\t{\n");
+            fprintf(fp, "\t\tdata = %p\n", (void*)stk->data);
+            fprintf(fp, "\t\t{\n");
             for (size_t i = 0; i < stk->size; i++)
             {
-                printf("\t\t\t[%ld] = %Lf\n", i, stk->data[i]);
+                fprintf(fp, "\t\t\t[%ld] = %Lf\n", i, stk->data[i]);
             }
-            printf("\t\t}\n");
+            fprintf(fp, "\t\t}\n");
 
-            printf("\t\tright_data_canary = %llx\n", *(Canary_t*)(stk->data + stk->capacity));
+            fprintf(fp, "\t\tright_data_canary = %llx\n", *(Canary_t*)(stk->data + stk->capacity));
 
         }
         
-        printf("\t}\n");
+        fprintf(fp, "\t}\n");
     }
-    printf("\tright_canary = %llx\n\n\n\n", stk->right_canary);
+    fprintf(fp, "\tright_canary = %llx\n\n\n\n", stk->right_canary);
 
+    fclose(fp);
 }
 
 int stack_verificator(Stack_t *stk)
