@@ -23,15 +23,12 @@ int main()
 */
     stk.left_canary = 123;
     stack_push(&stk, 3);
+    printf("%p\n", stk.data);
+    printf("%p\n", (Canary_t*)(stk.data) - 1);
 
-    Canary_t* temp_ptr = (Canary_t*)(&stk.data) - 1;
-    *temp_ptr = 16;
+    Canary_t* temp_ptr = (Canary_t*)(stk.data) - 1;
+    *temp_ptr = 228;
 
     stack_dtor(&stk);
     return 0;
 }
-
-/*канарейки - 2 long long, выделются сразу при создании стека, в начало и конец  указатель на стек - начиная с данных
-яд - то что в канарейках, большое шестнадцатиричное число*/
-
-
