@@ -7,13 +7,12 @@
 #include <assert.h>
 #include <math.h>
 
-#define UP_MEM_STEP 1.7F
-#define DOWN_MEM_STEP pow(1.5, -1)
 #define POISON 0xBADDEDBADl
 #define POISON_PTR 0x11
 #define CANARY 0xDEADDEDBADDED32F
 
-const double DMS = pow(1.5, -1);
+const double UP_MEM_STEP = 1.7;
+const double DOWN_MEM_STEP = pow(1.5, -1);
 
 enum STACK_STATUS
 {
