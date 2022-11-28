@@ -13,6 +13,7 @@
 #define POISON_PTR 0x11
 #define CANARY 0xDEADDEDBADDED32F
 
+const double DMS = pow(1.5, -1);
 
 enum STACK_STATUS
 {

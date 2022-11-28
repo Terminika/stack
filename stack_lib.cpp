@@ -192,7 +192,7 @@ void stack_dump(Stack_t* stk)
     char file_name[] = "stack_log.txt";
     if ((fp = fopen(file_name, "a+")) == NULL)
         {
-
+            return;
         }
     
     fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, stk->status == 0 ? "ok": "failed"); 
