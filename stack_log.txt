@@ -554,3 +554,559 @@ DAMAGED STACK
 
 
 
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 0
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 1
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 37.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 8
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 1
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 2
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 3
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 4
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 5
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 6
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 7
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 8
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 8
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 9
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+			[8] = 8.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 10
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+			[8] = 8.000000
+			[9] = 9.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 9
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+			[8] = 8.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 8
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+			[7] = 7.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 7
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+			[6] = 6.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 6
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+			[5] = 5.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 5
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 5
+		capacity = 13
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+			[4] = 4.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 4
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+			[3] = 3.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 3
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 3
+		capacity = 8
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+			[2] = 2.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 2
+		capacity = 5
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+			[1] = 1.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 1
+		capacity = 5
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (ok)
+	left_canary = deaddedbadded32f
+	{
+		size = 1
+		capacity = 5
+		left_data_canary = deaddedbadded32f
+		data = 0x7f8824d00008
+		{
+			[0] = 0.000000
+		}
+		right_data_canary = deaddedbadded32f
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (failed)
+DAMAGED STACK
+	left_canary = 7b
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 3
+	}
+	right_canary = deaddedbadded32f
+
+
+
+Stack [140732705044536] (failed)
+DAMAGED STACK
+	left_canary = 7b
+	Stack is empty
+
+	{
+		size = 0
+		capacity = 3
+	}
+	right_canary = deaddedbadded32f
+
+
+

@@ -35,35 +35,56 @@ do\
 }\
 while (0)
 
-Elem_t* stack_calloc(size_t capacity)
+STACK_STATUS stack_calloc(Stack_t* stk, size_t capacity)
 {
 
     Canary_t* temp_ptr = (Canary_t*)calloc(1, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
     
+    if (!temp_ptr)
+    {
+        return MEMORY_ERROR;
+    }
+
     *temp_ptr = CANARY;
     Elem_t* stk_data = (Elem_t*)(++temp_ptr);
 
-    temp_ptr = (Canary_t*)(stk_data + capacity);
+    if (!stk_data)
+    {
+        return MEMORY_ERROR;
+    }
 
+    stk->data = stk_data;
+
+    temp_ptr = (Canary_t*)(stk_data + capacity);
     *temp_ptr = CANARY;
     
-    return stk_data;
+    return OK;
 }
 
-Elem_t* stack_realloc(Stack_t* stk, size_t capacity)
+STACK_STATUS stack_realloc(Stack_t* stk, size_t capacity)
 {
     Canary_t* temp_ptr = (Canary_t*)(stk->data) - 1;
     
     temp_ptr = (Canary_t*)realloc(temp_ptr, capacity * sizeof(Elem_t) + 2 * sizeof(Canary_t));
 
+    if (!temp_ptr)
+    {
+        return MEMORY_ERROR;
+    }
     *temp_ptr = CANARY;
     Elem_t* stk_data = (Elem_t*)(++temp_ptr);
 
+    if (!stk_data)
+    {
+        return MEMORY_ERROR;
+    }
+
+    stk->data = stk_data;
+
     temp_ptr = (Canary_t*)(stk_data + capacity);
-    
     *temp_ptr = CANARY;
 
-    return stk_data;
+    return OK;
 }
 
 void stack_free(Stack_t* stk)
@@ -78,8 +99,7 @@ STACK_STATUS stack_ctor(Stack_t* stk, size_t capacity)
     stk->right_canary = CANARY;
     stk->size = 0;
     stk->capacity = capacity ;
-    stk->status = 0;
-    stk->data = stack_calloc(capacity);
+    stk->status = stack_calloc(stk, capacity);
     assert(stk->data != (Elem_t*)NULL);
     if (stk == NULL)
     {
@@ -112,7 +132,7 @@ STACK_STATUS stack_resize(Stack_t* stk, float step)
 
     size_t new_capacity = (stk->capacity * step);
 
-    stk->data = stack_realloc(stk, new_capacity); 
+    stk->status |= stack_realloc(stk, new_capacity); 
     for (size_t i = stk->capacity; i < new_capacity; i++)
     {
         stk->data[i] = POISON;
@@ -183,6 +203,10 @@ void decode_error(unsigned int status, FILE* fp)
     if (status & NULL_PTR)
     {
         fprintf(fp, "POINTER OF STACK POINT TO NOTHING\n");
+    }
+    if (status & MEMORY_ERROR)
+    {
+        fprintf(fp, "MEMORY ERROR (OVERLOADED)\n");
     }
 }
 

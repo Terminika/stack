@@ -23,7 +23,7 @@ enum STACK_STATUS
     POISON_DATA_PTR = 4,
     DAMAGED_STACK = 8,
     VERIFICATION_ERROR = 16,
-
+    MEMORY_ERROR = 32
 };
 
 typedef long double Elem_t;
