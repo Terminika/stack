@@ -13,6 +13,7 @@
 
 const double UP_MEM_STEP = 1.7;
 const double DOWN_MEM_STEP = pow(1.5, -1);
+size_t MIN_MEM_SIZE = 8;
 
 enum STACK_STATUS
 {

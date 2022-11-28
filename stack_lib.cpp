@@ -127,7 +127,7 @@ STACK_STATUS stack_resize(Stack_t* stk, float step)
 
     if (!stk->capacity)
     {
-        stk->capacity = 8;
+        stk->capacity = MIN_MEM_SIZE;
     } 
 
     size_t new_capacity = (stk->capacity * step);
@@ -219,8 +219,8 @@ void stack_dump(Stack_t* stk)
             return;
         }
     
-    fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, stk->status == 0 ? "ok": "failed"); 
-    if (stk->status != 0)
+    fprintf(fp, "Stack [%lu] (%s)\n", (long int)stk, stk->status == OK ? "ok": "failed"); 
+    if (stk->status != OK)
     {
         decode_error(stk->status, fp);
     }
